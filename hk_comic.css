@@ -1,0 +1,370 @@
+/* ==========================================================================
+   《港漫尖塔：群俠武神傳》 - 港漫熱血視覺樣式表 (css/hk_comic.css)
+   維護說明：修改顏色主題、漫畫分鏡邊框、網點背景、大字特效皆在此檔案調整
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap');
+
+:root {
+  --comic-bg: #140d0b;
+  --comic-paper: #f7eed6;
+  --comic-yellow: #ffd600;
+  --comic-gold: #ffab00;
+  --comic-red: #d50000;
+  --comic-crimson: #8e0000;
+  --comic-cyan: #00e5ff;
+  --comic-purple: #aa00ff;
+  --comic-green: #00c853;
+  --comic-ink: #0a0a0a;
+  --font-title: 'Noto Serif TC', 'PMingLiU', serif;
+  --font-body: 'Noto Sans TC', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--comic-bg);
+  color: #fff;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  min-height: 100vh;
+  /* 港漫網點與放射暗紋背景 */
+  background-image:
+    radial-gradient(rgba(255, 214, 0, 0.08) 1.5px, transparent 1.5px),
+    repeating-conic-gradient(from 0deg at 50% 35%, rgba(213, 0, 0, 0.05) 0deg 4deg, transparent 4deg 10deg),
+    linear-gradient(180deg, #1f110e 0%, #0d0807 100%);
+  background-size: 18px 18px, 100% 100%, 100% 100%;
+}
+
+/* 港漫粗黑分鏡框 */
+.comic-panel {
+  background: linear-gradient(145deg, #241915 0%, #160f0d 100%);
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0px #000, inset 0 0 0 2px rgba(255, 214, 0, 0.35);
+  position: relative;
+}
+
+/* 港漫黃底黑字旁白框 */
+.comic-narrator {
+  background: linear-gradient(90deg, #ffe54c 0%, #ffb300 100%);
+  color: #0a0a0a;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  font-family: var(--font-title);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.comic-narrator-tag {
+  background: var(--comic-red);
+  color: #fff;
+  border: 2px solid #000;
+  padding: 2px 8px;
+  font-weight: 900;
+  font-size: 0.78rem;
+  transform: skewX(-10deg);
+  display: inline-block;
+  box-shadow: 2px 2px 0 #000;
+}
+
+/* 港漫大字標題（紅黃漸層＋黑邊） */
+.hk-title-text {
+  font-family: var(--font-title);
+  font-weight: 900;
+  background: linear-gradient(180deg, #fffde7 0%, #ffd600 45%, #ff3d00 95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(3px 3px 0px #000) drop-shadow(-1px -1px 0px #000);
+  letter-spacing: 1px;
+}
+
+/* 港漫斜切按鈕 */
+.comic-btn {
+  background: linear-gradient(180deg, #ffd600 0%, #ff9100 100%);
+  color: #000;
+  font-family: var(--font-title);
+  font-weight: 900;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.15s ease;
+  transform: skewX(-6deg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.comic-btn:hover:not(:disabled) {
+  transform: skewX(-6deg) translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+  filter: brightness(1.08);
+}
+
+.comic-btn:active:not(:disabled) {
+  transform: skewX(-6deg) translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
+}
+
+.comic-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(0.7);
+}
+
+.comic-btn-red {
+  background: linear-gradient(180deg, #ff5252 0%, #b71c1c 100%);
+  color: #fff;
+}
+
+.comic-btn-cyan {
+  background: linear-gradient(180deg, #40c4ff 0%, #006064 100%);
+  color: #fff;
+}
+
+.comic-btn-dark {
+  background: linear-gradient(180deg, #3e2723 0%, #1b0f0d 100%);
+  color: #ffd600;
+}
+
+/* 卡牌設計 (港漫武學秘笈風格) */
+.hk-card {
+  width: 158px;
+  min-height: 226px;
+  background: var(--comic-paper);
+  color: #111;
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0px #000;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.18s ease;
+  /* 宣紙網點紋理 */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.hk-card:hover {
+  transform: translateY(-16px) scale(1.06) rotate(-1deg);
+  box-shadow: 9px 14px 0px #000, 0 0 16px rgba(255, 214, 0, 0.75);
+  z-index: 30;
+}
+
+.hk-card.unplayable {
+  opacity: 0.62;
+  filter: grayscale(0.45);
+}
+
+.hk-card.unplayable:hover {
+  transform: translateY(-5px);
+}
+
+/* 卡牌種類色框 */
+.hk-card.type-attack {
+  border-top: 7px solid #d50000;
+}
+.hk-card.type-skill {
+  border-top: 7px solid #0091ea;
+}
+.hk-card.type-power {
+  border-top: 7px solid #aa00ff;
+}
+.hk-card.type-fused {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffd54f 50%, #ff8f00 100%);
+  border: 3px solid #000;
+  border-top: 7px solid #ff3d00;
+  box-shadow: 5px 5px 0px #000, 0 0 18px rgba(255, 171, 0, 0.75);
+}
+
+/* ★3 極意升級閃光標記 */
+.hk-card.upgraded {
+  box-shadow: 5px 5px 0px #000, inset 0 0 0 2px #ffab00;
+}
+
+.card-cost-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 34px;
+  height: 34px;
+  background: radial-gradient(circle, #ffd600 0%, #ff6d00 100%);
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 50%;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 #000;
+  z-index: 5;
+}
+
+.card-type-pill {
+  font-size: 0.68rem;
+  font-weight: 900;
+  padding: 1px 6px;
+  border: 1.5px solid #000;
+  color: #fff;
+  transform: skewX(-8deg);
+}
+
+.type-attack .card-type-pill { background: #d50000; }
+.type-skill .card-type-pill { background: #0077c2; }
+.type-power .card-type-pill { background: #7b1fa2; }
+.type-fused .card-type-pill { background: linear-gradient(90deg, #d50000, #aa00ff); }
+
+.card-art-box {
+  height: 62px;
+  margin: 4px 0;
+  border: 2px solid #000;
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%, rgba(0,0,0,0.12) 0deg 6deg, transparent 6deg 14deg),
+    linear-gradient(180deg, #2b1d19 0%, #140d0b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-desc-box {
+  font-size: 0.74rem;
+  line-height: 1.32;
+  font-weight: 700;
+  color: #1a110e;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid #2b1d19;
+  padding: 5px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 港漫出招大字特效 (擬聲詞 / 招式名) */
+@keyframes comicSlam {
+  0% { transform: translate(-50%, -50%) scale(2.8) rotate(-10deg); opacity: 0; }
+  25% { transform: translate(-50%, -50%) scale(0.95) rotate(-3deg); opacity: 1; }
+  45% { transform: translate(-50%, -50%) scale(1.06) rotate(-5deg); opacity: 1; }
+  80% { transform: translate(-50%, -50%) scale(1) rotate(-4deg); opacity: 1; }
+  100% { transform: translate(-50%, -62%) scale(1.15) rotate(-4deg); opacity: 0; }
+}
+
+.comic-fx-banner {
+  position: fixed;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 100;
+  text-align: center;
+  animation: comicSlam 1.15s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+.comic-fx-main {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-weight: 900;
+  color: #ffd600;
+  text-shadow:
+    4px 4px 0 #d50000,
+    -3px -3px 0 #000,
+    3px -3px 0 #000,
+    -3px 3px 0 #000,
+    7px 7px 0 #000;
+  white-space: nowrap;
+  padding: 6px 22px;
+  background: rgba(0, 0, 0, 0.78);
+  border: 4px solid #ffd600;
+  box-shadow: 8px 8px 0 #000;
+}
+
+/* 受擊震動與閃光動畫 */
+@keyframes shakeHit {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-10px, 4px) rotate(-2deg); }
+  40% { transform: translate(10px, -4px) rotate(2deg); }
+  60% { transform: translate(-6px, -2px); }
+  80% { transform: translate(6px, 2px); }
+}
+
+.shake-anim {
+  animation: shakeHit 0.38s ease;
+}
+
+/* 血量條與護體罡氣 */
+.hp-bar-outer {
+  height: 20px;
+  background: #1a0f0d;
+  border: 2.5px solid #000;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.hp-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, #ff1744 0%, #d50000 100%);
+  transition: width 0.28s ease;
+}
+
+.pet-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, #00e5ff 0%, #00b0ff 100%);
+  transition: width 0.28s ease;
+}
+
+/* 爬塔路線節點 */
+.map-node {
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.map-node.active-floor {
+  border-color: #ffd600;
+  box-shadow: 0 0 15px rgba(255, 214, 0, 0.8), 4px 4px 0 #000;
+  transform: scale(1.04);
+}
+
+/* 彈出視窗 */
+.comic-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 80;
+  padding: 16px;
+}
+
+/* 手機與窄螢幕自適應 */
+@media (max-width: 768px) {
+  .hk-card {
+    width: 132px;
+    min-height: 198px;
+    padding: 6px;
+  }
+  .card-art-box {
+    height: 46px;
+    font-size: 1.6rem;
+  }
+  .card-desc-box {
+    font-size: 0.68rem;
+  }
+}
