@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《港漫尖塔：群俠武神傳》- 港漫風卡牌闖關遊戲</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="stylesheet" href="css/hk_comic.css" />
+</head>
+<body>
+  <div id="app-root"></div>
+
+  <!-- 1. 遊戲資料庫模組 (日後新增角色、卡牌、Boss 或海克斯法寶只需改 data/ 資料夾) -->
+  <script src="data/heroes.js"></script>
+  <script src="data/cards.js"></script>
+  <script src="data/relics_events.js"></script>
+  <script src="data/enemies.js"></script>
+
+  <!-- 2. 遊戲核心邏輯與港漫介面模組 -->
+  <script src="js/audio.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
